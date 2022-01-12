@@ -43,3 +43,7 @@ app.UseIdentityServer();
 app.Run();
 
 -----------------------------------------------------------------------------
+
+dotnet run Server/bin/Debug/net6.0/Server /seed --project Server
+
+https://localhost:5001/.well-known/openid-configuration
