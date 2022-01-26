@@ -45,7 +45,8 @@ var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseIdentityServer();
-app.UseAuthorization();
-app.UseEndpoints(x => x.MapDefaultControllerRoute());
+//app.UseAuthentication();
+//app.UseAuthorization();
+//app.UseEndpoints(x => x.MapDefaultControllerRoute());
 
 app.Run();
