@@ -17,14 +17,15 @@ namespace Server
 
         public static IEnumerable<ApiScope> ApiScopes => new[]
         {
-            new ApiScope("CoffeeAPI.read"),
-            new ApiScope("CoffeeAPI.write")
+            new ApiScope(name:"CoffeeAPI.read", displayName:"Reads my api"),
+            new ApiScope(name:"CoffeeAPI.write", displayName:"Writes my api")
         };
 
         public static IEnumerable<ApiResource> ApiResources => new[]
         {
-            new ApiResource("CoffeeAPI")
+            new ApiResource()
             {
+                Name="CoffeeApi",
                 Scopes = new List<string> { "CoffeeAPI.read", "CoffeeAPI.write" },
                 ApiSecrets = new List<Secret> { new Secret("ScopeSecret".Sha256()) },
                 UserClaims = new List<string> { "role"}
@@ -39,7 +40,7 @@ namespace Server
                 ClientName = "Client Cresntials Client",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("ClientSecret1".Sha256())},
-                AllowedScopes = {"CoffeeAPI.read","CoffeeAPI.write"}
+                AllowedScopes = { "CoffeeAPI.read", "CoffeeAPI.write" }
             },
             new Client
             {

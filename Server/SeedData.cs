@@ -82,6 +82,16 @@ namespace Server
                 context.SaveChanges();
             }
 
+            if (!context.ApiResources.Any())
+            {
+                foreach(var resource in Config.ApiResources.ToList())
+                {
+                    context.ApiResources.Add(resource.ToEntity());
+                }
+
+                context.SaveChanges();
+            }
+
 
         }
 

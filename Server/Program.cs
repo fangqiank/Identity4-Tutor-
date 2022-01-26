@@ -28,7 +28,7 @@ builder.Services.AddDbContext<AspNetIdentityDbContext>(options =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<AspNetIdentityDbContext>();
 
-builder.Services.AddIdentityServer()
+builder.Services.AddIdentityServer(/*opt => opt.EmitStaticAudienceClaim = false*/)
     .AddAspNetIdentity<IdentityUser>()
     .AddConfigurationStore(options =>
 {
@@ -40,13 +40,16 @@ builder.Services.AddIdentityServer()
 })
 .AddDeveloperSigningCredential();
 
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 
 app.UseStaticFiles();
 app.UseRouting();
 app.UseIdentityServer();
-//app.UseAuthentication();
-//app.UseAuthorization();
-//app.UseEndpoints(x => x.MapDefaultControllerRoute());
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseEndpoints(x => x.MapDefaultControllerRoute());
 
 app.Run();

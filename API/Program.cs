@@ -10,7 +10,7 @@ builder.Services.AddAuthentication("Bearer")
     .AddIdentityServerAuthentication("Bearer", opt =>
     {
         opt.Authority = "https://localhost:5001";
-        opt.ApiName = "CoffeeAPI";
+        opt.ApiName = "CoffeeApi";
     });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
